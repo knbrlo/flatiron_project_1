@@ -171,6 +171,13 @@ class GreatGameGetter::CLI
                 # hidden review detail
                 review_detail_value_raw = data_from_page.css(".nonresponsive_hidden").text
                 review_detail_value_clean = review_detail_value_raw.strip
+
+                # release date
+                release_date_raw = data_from_page.css(".release_date .date").text
+
+                # developers
+                developers_raw = data_from_page.css(".dev_row #developers_list a").text
+                developers_value_clean = developers_raw.gsub(" ", ", ")
                 
                 puts ""
                 puts "Here's more information about the game you selected"
@@ -192,8 +199,11 @@ class GreatGameGetter::CLI
                     puts ""
                 end
                 
-                puts "Platforms: #{item.platforms.join(", ")}"
+                puts "Platforms:"
                 puts "- #{item.platforms.join(", ")}"
+                puts ""
+                puts "Release Date:"
+                puts "- #{release_date_raw}}"
                 puts ""
                 puts "Tags:"
                 puts "- #{item.tags.join(", ")}"
@@ -213,17 +223,12 @@ class GreatGameGetter::CLI
                 puts "Link to Game Artwork:"
                 puts "- #{item.image_url}"
                 puts ""
+                puts "Developers:"
+                puts "#{developers_value_clean}"
+                puts ""
                 puts "---------------------------------------------------------------------------------"
                 puts ""
 
-
-                
-                # todo - get the release date
-                # todo - get the developer 
-                # todo - get the publisher
-                
-
-                # todo - continue here print more information about a game.
 
                 # todo - give them the ability to go back to the start
 
