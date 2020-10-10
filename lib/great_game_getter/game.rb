@@ -92,7 +92,7 @@ class GreatGameGetter::Game
                     if item.price == 0.00
                         puts "Price: FREE!"
                     else
-                        puts "Price: #{item.price}"
+                        puts "Price: $#{item.price}"
                     end
                     
                     puts "Platforms: #{item.platforms.join(", ")}"
