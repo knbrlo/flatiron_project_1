@@ -23,11 +23,11 @@ class GreatGameGetter::Game
             item_class_name = item.attr("class")
 
             if item_class_name.include?("platform_img win")
-                array_platforms << "win"
+                array_platforms << "Windows"
             elsif item_class_name.include?("platform_img mac")
-                array_platforms << "mac"
+                array_platforms << "Mac"
             elsif item_class_name.include?("platform_img linux")
-                array_platforms << "linux"
+                array_platforms << "Linux"
             end
         end
 
@@ -36,8 +36,7 @@ class GreatGameGetter::Game
 
         tag_values_raw.each do |item|
             tag_name = item.text
-            clean_tag_name = tag_name.gsub(", ", "")
-            array_tags << clean_tag_name
+            array_tags << tag_name
         end
 
         price_value = game_arg.css(".discount_final_price").text
@@ -61,25 +60,25 @@ class GreatGameGetter::Game
             if page_arg == 1
                 puts ""
                 puts ""
-                puts "========== NEW RELEASES ============="
+                puts "==================== NEW RELEASES =========================="
                 puts ""
                 puts ""
             elsif page_arg == 2
                 puts ""
                 puts ""
-                puts "========== TOP SELLERS ============="
+                puts "==================== TOP SELLERS =========================="
                 puts ""
                 puts ""
             elsif page_arg == 3
                 puts ""
                 puts ""
-                puts "========== WHAT'S BEING PLAYED ============="
+                puts "==================== WHAT'S BEING PLAYED =========================="
                 puts ""
                 puts ""
             elsif page_arg == 4
                 puts ""
                 puts ""
-                puts "========== UPCOMING ============="
+                puts "==================== UPCOMING =========================="
                 puts ""
                 puts ""
             end
@@ -87,7 +86,18 @@ class GreatGameGetter::Game
             @@all.each_with_index do |item, index|
 
                 if !item.title.empty?
-                    puts "#{index+1}. - #{item.title} "
+                    puts "Game ##{index+1}."
+                    puts "Title: #{item.title} "
+
+                    if item.price == 0.00
+                        puts "Price: FREE!"
+                    else
+                        puts "Price: #{item.price}"
+                    end
+                    
+                    puts "Platforms: #{item.platforms.join(", ")}"
+                    puts "Tags: #{item.tags.join(", ")}"
+                    puts "----------------------------------------------------------------"
                     puts ""
                 end
             end
