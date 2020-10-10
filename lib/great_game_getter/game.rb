@@ -119,8 +119,6 @@ class GreatGameGetter::Game
                 
                 puts "Platforms: #{item.platforms.join(", ")}"
                 puts "Tags: #{item.tags.join(", ")}"
-                puts "Link to Purchase: #{item.browser_url}" 
-                puts "Link to Game Artwork: #{item.image_url}"
                 puts "----------------------------------------------------------------"
                 puts ""
             end
