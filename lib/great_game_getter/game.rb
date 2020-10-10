@@ -200,7 +200,8 @@ class GreatGameGetter::Game
                 end  
             end
         end
-      
+
+        what_would_like_to_do_next(section_arg)
     end
 
     def self.print_games_sorted_by_price(section_arg)
@@ -282,6 +283,41 @@ class GreatGameGetter::Game
                 puts "" 
             end
         end
+
+        what_would_like_to_do_next(section_arg)
+    end
+
+    def self.what_would_like_to_do_next(section_arg)
+        puts "================================================================"
+        puts "****************************************************************"
+        puts "================================================================"
+        puts "****************************************************************"
+        puts ""
+        puts "What would you like to do next?"
+        puts ""
+        puts "1 - Filter by platform"
+        puts "2 - Sort by price"
+        puts ""
+        puts "----------------------------------------------------------------"
+        puts "Press 5 to restart the app"
+        puts "----------------------------------------------------------------"
+        puts "Press 9 to quit the app"
+        puts "----------------------------------------------------------------"
+        puts ""
+
+        user_input = gets.strip.to_i
+        
+
+        if user_input == 1
+            self.print_games_find_by_platform(section_arg)
+        elsif user_input == 2
+            self.print_games_sorted_by_price(section_arg)
+        elsif user_input == 5
+            GreatGameGetter::CLI.start_from_outside
+        elsif user_input == 9
+            exit
+        end
+        
     end
 
 end
