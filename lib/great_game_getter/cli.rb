@@ -70,6 +70,7 @@ class GreatGameGetter::CLI
         puts "****************************************************************"
         puts ""
         puts "What would you like to do next?"
+        puts ""
         puts "1 - See more info about a game"
         puts "2 - Sort by platform"
         puts "3 - Sort by price"
@@ -119,7 +120,7 @@ class GreatGameGetter::CLI
             section_title = "UPCOMING"
         end
 
-
+        # show all the games available to choose from to see more info about
         GreatGameGetter::Game.print_games_only
 
         puts ""
@@ -203,7 +204,7 @@ class GreatGameGetter::CLI
                 puts "- #{item.platforms.join(", ")}"
                 puts ""
                 puts "Release Date:"
-                puts "- #{release_date_raw}}"
+                puts "- #{release_date_raw}"
                 puts ""
                 puts "Tags:"
                 puts "- #{item.tags.join(", ")}"
@@ -231,8 +232,37 @@ class GreatGameGetter::CLI
 
 
                 # todo - give them the ability to go back to the start
-
+                start_over_or_see_another_game
             end
         end
     end
+
+
+    def start_over_or_see_another_game
+        puts "================================================================"
+        puts "****************************************************************"
+        puts "================================================================"
+        puts "****************************************************************"
+        puts ""
+        puts "What would you like to do next?"
+        puts ""
+        puts "1 - Select a different section"
+        puts "2 - See info about another game"
+        puts ""
+        puts "----------------------------------------------------------------"
+        puts "Press 5 to quit the app"
+        puts "----------------------------------------------------------------"
+        puts ""
+
+        user_input  = gets.strip.to_i
+
+        if user_input == 1
+            start
+        elsif user_input == 2
+            step_see_more_info(user_input)
+        elsif user_input == 5
+            exit
+        end
+    end
+
 end
