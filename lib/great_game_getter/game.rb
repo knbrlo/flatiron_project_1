@@ -12,13 +12,9 @@ class GreatGameGetter::Game
 
     def self.new_from_page(game_arg)
         
-        # title
         name_value = game_arg.css(".tab_item_name").text
 
-
-        # platform
         platform_values_raw = game_arg.css(".tab_item_details span")
-
         array_platforms = []
 
         platform_values_raw.each do |item|
@@ -33,8 +29,6 @@ class GreatGameGetter::Game
             end
         end
 
-
-        # details
         tag_values_raw = game_arg.css(".tab_item_top_tags")
         array_tags = []
 
@@ -44,13 +38,9 @@ class GreatGameGetter::Game
             array_tags << clean_tag_name
         end
 
-        # price
         price_value = game_arg.css(".discount_final_price").text
+        clean_price_value = price_value.gsub("$", "").to_f
 
-        clean_price_value = price_value.gsub("$", "")
-
-        sample_item = self.new(name_value, array_platforms, array_tags, clean_price_value)
-        p sample_item
-        sample_item
+        self.new(name_value, array_platforms, array_tags, clean_price_value)
     end
 end
