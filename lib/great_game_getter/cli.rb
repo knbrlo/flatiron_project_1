@@ -230,8 +230,6 @@ class GreatGameGetter::CLI
                 puts "---------------------------------------------------------------------------------"
                 puts ""
 
-
-                # todo - give them the ability to go back to the start
                 start_over_or_see_another_game
             end
         end
