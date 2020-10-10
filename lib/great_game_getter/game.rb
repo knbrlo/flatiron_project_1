@@ -1,19 +1,21 @@
 class GreatGameGetter::Game
-    attr_accessor :title, :platforms, :tags, :price
+    attr_accessor :title, :platforms, :tags, :price, :browser_url, :image_url
 
     @@all = []
 
-    def initialize(title_arg=nil, platforms_arg=[],  tags_arg=[], price_arg=nil)
+    def initialize(title_arg=nil, platforms_arg=[],  tags_arg=[], price_arg=nil, browser_url_arg=nil, image_url_arg=nil)
         @title = title_arg
         @platforms = platforms_arg
         @tags = tags_arg
         @price = price_arg
+        @browser_url = browser_url_arg
+        @image_url = image_url_arg
         @@all << self
     end
 
 
     def self.new_from_page(game_arg)
-        
+
         name_value = game_arg.css(".tab_item_name").text
 
         platform_values_raw = game_arg.css(".tab_item_details span")
@@ -42,7 +44,11 @@ class GreatGameGetter::Game
         price_value = game_arg.css(".discount_final_price").text
         clean_price_value = price_value.gsub("$", "").to_f
 
-        self.new(name_value, array_platforms, array_tags, clean_price_value)
+        url_for_game = game_arg.attribute("href").value
+
+        image_url_for_game = game_arg.css(".tab_item_cap_img").attribute("src")
+
+        self.new(name_value, array_platforms, array_tags, clean_price_value, url_for_game, image_url_for_game)
     end
 
     def self.all
@@ -60,25 +66,33 @@ class GreatGameGetter::Game
             if page_arg == 1
                 puts ""
                 puts ""
+                puts "************************************************************"
                 puts "==================== NEW RELEASES =========================="
+                puts "************************************************************"
                 puts ""
                 puts ""
             elsif page_arg == 2
                 puts ""
                 puts ""
+                puts "***********************************************************"
                 puts "==================== TOP SELLERS =========================="
+                puts "***********************************************************"
                 puts ""
                 puts ""
             elsif page_arg == 3
                 puts ""
                 puts ""
-                puts "==================== WHAT'S BEING PLAYED =========================="
+                puts "************************************************************"
+                puts "================= WHAT'S BEING PLAYED ======================"
+                puts "************************************************************"
                 puts ""
                 puts ""
             elsif page_arg == 4
                 puts ""
                 puts ""
-                puts "==================== UPCOMING =========================="
+                puts "************************************************************"
+                puts "======================= UPCOMING ==========================="
+                puts "************************************************************"
                 puts ""
                 puts ""
             end
@@ -97,6 +111,8 @@ class GreatGameGetter::Game
                     
                     puts "Platforms: #{item.platforms.join(", ")}"
                     puts "Tags: #{item.tags.join(", ")}"
+                    puts "Link to Purchase: #{item.browser_url}" 
+                    puts "Link to Game Artwork: #{item.image_url}"
                     puts "----------------------------------------------------------------"
                     puts ""
                 end

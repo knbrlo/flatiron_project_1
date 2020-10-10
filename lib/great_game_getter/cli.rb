@@ -1,9 +1,40 @@
 class GreatGameGetter::CLI
 
     def main_call
+        intro_logo
         puts "Welcome to the Great Game Getter!"
         start
     end
+
+    def intro_logo
+        puts """
+        #####                                   
+        #     # #####  ######   ##   #####       
+        #       #    # #       #  #    #         
+        #  #### #    # #####  #    #   #         
+        #     # #####  #      ######   #         
+        #     # #   #  #      #    #   #         
+         #####  #    # ###### #    #   #         
+                                                 
+         #####                                   
+        #     #   ##   #    # ######             
+        #        #  #  ##  ## #                  
+        #  #### #    # # ## # #####              
+        #     # ###### #    # #                  
+        #     # #    # #    # #                  
+         #####  #    # #    # ######             
+                                                 
+         #####                                   
+        #     # ###### ##### ##### ###### #####  
+        #       #        #     #   #      #    # 
+        #  #### #####    #     #   #####  #    # 
+        #     # #        #     #   #      #####  
+        #     # #        #     #   #      #   #  
+         #####  ######   #     #   ###### #    # 
+                                                 
+        """
+    end
+
 
     def start
         puts ""
@@ -13,7 +44,11 @@ class GreatGameGetter::CLI
         puts "2 - Top Sellers"
         puts "3 - What's Being Played"
         puts "4 - Upcoming"
-        puts "5 - Quit this app"
+        puts ""
+        puts "----------------------------------------------------------------"
+        puts "Press 5 to quit the app"
+        puts "----------------------------------------------------------------"
+
 
         user_input = gets.strip.to_i
 
@@ -36,12 +71,14 @@ class GreatGameGetter::CLI
         puts ""
         puts "What would you like to do next?"
         puts ""
-        puts "1 - See more information about a game"
+
         puts "2 - Sort by platform"
         puts "3 - Sort by price"
         puts "4 - Show games by tag"
-        puts "5 - Quit this app"
         puts ""
+        puts "----------------------------------------------------------------"
+        puts "Press 5 to quit the app"
+        puts "----------------------------------------------------------------"
 
         user_input_step_2 = gets.strip.to_i
 

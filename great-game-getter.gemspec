@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", ">= 3.9.0"
   s.add_development_dependency "nokogiri", ">= 1.10.10"
   s.add_development_dependency "pry", ">= 0.13.1"
+  s.add_development_dependency "colorize", ">= 0.8.1"
 end

@@ -18,7 +18,7 @@ class GreatGameGetter::Scraper
 
     def create_games(page_num_arg)
 
-        # when a new number is pressed, then clear out the old results
+        # todo - when a new number is pressed, then clear out the old results
         # p GreatGameGetter::Game.all.count
         # GreatGameGetter::Game.clear_all
         # p GreatGameGetter::Game.all.count
