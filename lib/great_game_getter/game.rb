@@ -10,18 +10,23 @@ class GreatGameGetter::Game
         @price = price_arg
         @browser_url = browser_url_arg
         @image_url = image_url_arg
+
+        # add this instance to the @@all
         @@all << self
     end
 
 
     def self.new_from_page(game_arg)
 
+        # get the name value of the game
         name_value = game_arg.css(".tab_item_name").text
 
+        # platform values
         platform_values_raw = game_arg.css(".tab_item_details span")
         array_platforms = []
 
         platform_values_raw.each do |item|
+
             item_class_name = item.attr("class")
 
             if item_class_name.include?("platform_img win")
@@ -33,6 +38,7 @@ class GreatGameGetter::Game
             end
         end
 
+        # tag values
         tag_values_raw = game_arg.css(".tab_item_top_tags")
         array_tags = []
 
@@ -41,13 +47,17 @@ class GreatGameGetter::Game
             array_tags << tag_name
         end
 
+        # price
         price_value = game_arg.css(".discount_final_price").text
         clean_price_value = price_value.gsub("$", "").to_f
 
+        # url 
         url_for_game = game_arg.attribute("href").value
 
+        # image
         image_url_for_game = game_arg.css(".tab_item_cap_img").attribute("src")
 
+        # create the ne object
         self.new(name_value, array_platforms, array_tags, clean_price_value, url_for_game, image_url_for_game)
     end
 
@@ -260,7 +270,6 @@ class GreatGameGetter::Game
             sorted_by_price = @@all.sort {|x, y| y.price <=> x.price}
         elsif order_selected == "Lowest First"
             puts "Games from the #{section_title} section, sorted lowest to highest."
-            
             sorted_by_price = @@all.sort {|x, y| x.price <=> y.price}
         end
 

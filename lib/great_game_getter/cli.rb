@@ -50,7 +50,6 @@ class GreatGameGetter::CLI
         puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
 
-
         user_input = gets.strip.to_i
 
         if user_input.between?(1,4)
@@ -93,7 +92,6 @@ class GreatGameGetter::CLI
         user_input_step_2 = gets.strip.to_i
 
         if user_input_step_2 == 1
-            
             step_see_more_info(section_arg)
         elsif user_input_step_2 == 2
             GreatGameGetter::Game.print_games_find_by_platform(section_arg)
