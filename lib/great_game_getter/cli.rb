@@ -13,13 +13,18 @@ class GreatGameGetter::CLI
         puts "2 - Top Sellers"
         puts "3 - What's Being Played"
         puts "4 - Upcoming"
-
-        # todo - breaks here if they just press enter.
+        puts "5 - Quit this app"
 
         user_input = gets.strip.to_i
-        GreatGameGetter::Scraper.new.create_games(user_input)
-        GreatGameGetter::Game.print_games(user_input)
-        step_2
+
+        if user_input.between?(1,4)
+            GreatGameGetter::Scraper.new.create_games(user_input)
+            GreatGameGetter::Game.print_games(user_input)
+            step_2
+        elsif user_input == 5
+            exit
+        end
+
     end
 
 
@@ -35,6 +40,7 @@ class GreatGameGetter::CLI
         puts "2 - Sort by platform"
         puts "3 - Sort by price"
         puts "4 - Show games by tag"
+        puts "5 - Quit this app"
         puts ""
 
         user_input_step_2 = gets.strip.to_i
@@ -51,8 +57,11 @@ class GreatGameGetter::CLI
         elsif user_input_step_2 == 4
             puts "Sort games by tag"
 
+        elsif user_input_step_2 == 5
+            exit
+
         else
-            puts "Invalid selection, please select 1 - 4"
+            puts "Invalid selection, please select 1 - 5"
             step_2
         end
     end
