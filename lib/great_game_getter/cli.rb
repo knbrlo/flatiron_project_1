@@ -46,7 +46,7 @@ class GreatGameGetter::CLI
         puts "4 - Upcoming"
         puts ""
         puts "----------------------------------------------------------------"
-        puts "Press 5 to quit the app"
+        puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
 
 
@@ -56,7 +56,7 @@ class GreatGameGetter::CLI
             GreatGameGetter::Scraper.new.create_games(user_input)
             GreatGameGetter::Game.print_games(user_input)
             step_2(user_input)
-        elsif user_input == 5
+        elsif user_input == 9
             exit
         end
 
@@ -74,10 +74,9 @@ class GreatGameGetter::CLI
         puts "1 - See more info about a game"
         puts "2 - Sort by platform"
         puts "3 - Sort by price"
-        puts "4 - Show games by tag"
         puts ""
         puts "----------------------------------------------------------------"
-        puts "Press 5 to quit the app"
+        puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
         puts ""
 
@@ -95,11 +94,11 @@ class GreatGameGetter::CLI
         elsif user_input_step_2 == 4
             puts "Sort games by tag"
 
-        elsif user_input_step_2 == 5
+        elsif user_input_step_2 == 9
             exit
 
         else
-            puts "Invalid selection, please select 1 - 5"
+            puts "Invalid selection, please select 1 - 4"
             step_2
         end
     end
@@ -248,7 +247,7 @@ class GreatGameGetter::CLI
         puts "2 - See info about another game"
         puts ""
         puts "----------------------------------------------------------------"
-        puts "Press 5 to quit the app"
+        puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
         puts ""
 
@@ -258,7 +257,7 @@ class GreatGameGetter::CLI
             start
         elsif user_input == 2
             step_see_more_info(user_input)
-        elsif user_input == 5
+        elsif user_input == 9
             exit
         end
     end
