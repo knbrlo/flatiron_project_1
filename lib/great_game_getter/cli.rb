@@ -35,7 +35,6 @@ class GreatGameGetter::CLI
         """
     end
 
-
     def start
         puts ""
         puts "What section would you like to view information from?"
@@ -46,6 +45,8 @@ class GreatGameGetter::CLI
         puts "4 - Upcoming"
         puts ""
         puts "----------------------------------------------------------------"
+        puts "Press 5 to restart the app"
+        puts "----------------------------------------------------------------"
         puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
 
@@ -55,15 +56,22 @@ class GreatGameGetter::CLI
         if user_input.between?(1,4)
             GreatGameGetter::Scraper.new.create_games(user_input)
             GreatGameGetter::Game.print_games(user_input)
-            step_2(user_input)
+            what_next(user_input)
+        elsif user_input == 5
+            start
         elsif user_input == 9
             exit
         end
 
     end
 
+    def self.start_from_outside
+        cli_instance = GreatGameGetter::CLI.new
+        cli_instance.start
+    end
 
-    def step_2(section_arg)
+
+    def what_next(section_arg)
         puts "================================================================"
         puts "****************************************************************"
         puts "================================================================"
@@ -72,9 +80,11 @@ class GreatGameGetter::CLI
         puts "What would you like to do next?"
         puts ""
         puts "1 - See more info about a game"
-        puts "2 - Sort by platform"
+        puts "2 - Find by platform"
         puts "3 - Sort by price"
         puts ""
+        puts "----------------------------------------------------------------"
+        puts "Press 5 to restart the app"
         puts "----------------------------------------------------------------"
         puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
@@ -86,20 +96,16 @@ class GreatGameGetter::CLI
             
             step_see_more_info(section_arg)
         elsif user_input_step_2 == 2
-            puts "Sort games by platform"
-
+            GreatGameGetter::Game.print_games_find_by_platform(section_arg)
         elsif user_input_step_2 == 3
-            puts "Sort games by price"
-
-        elsif user_input_step_2 == 4
-            puts "Sort games by tag"
-
+            GreatGameGetter::Game.print_games_sorted_by_price(section_arg)
+        elsif user_input_step_2 == 5
+            start
         elsif user_input_step_2 == 9
             exit
-
         else
-            puts "Invalid selection, please select 1 - 4"
-            step_2
+            puts "Invalid selection, please select 1 - 3"
+            what_next(section_arg)
         end
     end
 
@@ -247,6 +253,8 @@ class GreatGameGetter::CLI
         puts "2 - See info about another game"
         puts ""
         puts "----------------------------------------------------------------"
+        puts "Press 5 to restart the app"
+        puts "----------------------------------------------------------------"
         puts "Press 9 to quit the app"
         puts "----------------------------------------------------------------"
         puts ""
@@ -257,6 +265,8 @@ class GreatGameGetter::CLI
             start
         elsif user_input == 2
             step_see_more_info(user_input)
+        elsif user_input == 5
+            start
         elsif user_input == 9
             exit
         end
