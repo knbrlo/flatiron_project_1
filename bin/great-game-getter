@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/great_game_getter'
+
+GreatGameGetter::CLI.new.main_call
