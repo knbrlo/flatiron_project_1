@@ -119,12 +119,40 @@ class GreatGameGetter::CLI
             if (index + 1) == user_input_see_more
 
                 data_from_page = GreatGameGetter::Scraper.get_page_detail(item.browser_url)
-                
                 description_value_raw = data_from_page.css(".game_description_snippet").text
+                description_value_clean = description_value_raw.strip
 
-                description_value_clean = description_value.strip
+                
+                puts "Game ##{index+1}."
+                puts "Title: #{item.title} "
+
+                if item.price == 0.00
+                    puts "Price: FREE!"
+                else
+                    puts "Price: $#{item.price}"
+                end
+                
+                puts "Platforms: #{item.platforms.join(", ")}"
+                puts "Tags: #{item.tags.join(", ")}"
+                puts "Link to Purchase: #{item.browser_url}" 
+                puts "Link to Game Artwork: #{item.image_url}"
+                puts "----------------------------------------------------------------"
+                puts "------------------- MORE GAME INFO BELOW -----------------------"
+                puts "----------------------------------------------------------------"
+                puts "Description: #{description_value_clean}"
+                puts ""
+                puts ""
+                
+                
+                # todo - get the reviews
+                # todo - get the release date
+                # todo - get the developer 
+                # todo - get the publisher
+                
 
                 # todo - continue here print more information about a game.
+
+                # todo - give them the ability to go back to the start
 
             end
         end
