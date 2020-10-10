@@ -92,7 +92,7 @@ class GreatGameGetter::Game
                 end
             end
         else
-            puts "Invalid selection, please select pages 1 - 4"
+            puts "Invalid selection, please select 1 - 4"
         end
     end
 end

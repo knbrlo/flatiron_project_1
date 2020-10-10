@@ -30,7 +30,7 @@ class GreatGameGetter::Scraper
                 GreatGameGetter::Game.new_from_page(game)
             end
         else
-            puts "Invalid page selection, please select pages 1 - 4"
+            puts "Invalid selection, please select 1 - 4"
         end
     end
 
