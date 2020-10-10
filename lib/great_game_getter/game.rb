@@ -1,12 +1,14 @@
 class GreatGameGetter::Game
     attr_accessor :title, :platforms, :tags, :price
 
+    @@all = []
 
     def initialize(title_arg=nil, platforms_arg=[],  tags_arg=[], price_arg=nil)
         @title = title_arg
         @platforms = platforms_arg
         @tags = tags_arg
         @price = price_arg
+        @@all << self
     end
 
 
@@ -42,5 +44,13 @@ class GreatGameGetter::Game
         clean_price_value = price_value.gsub("$", "").to_f
 
         self.new(name_value, array_platforms, array_tags, clean_price_value)
+    end
+
+    def self.all
+        @@all
+    end
+
+    def self.clear_all
+        @@all.clear
     end
 end
