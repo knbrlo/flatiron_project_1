@@ -70,8 +70,7 @@ class GreatGameGetter::CLI
         puts "****************************************************************"
         puts ""
         puts "What would you like to do next?"
-        puts ""
-
+        puts "1 - See more info about a game"
         puts "2 - Sort by platform"
         puts "3 - Sort by price"
         puts "4 - Show games by tag"
@@ -83,8 +82,8 @@ class GreatGameGetter::CLI
         user_input_step_2 = gets.strip.to_i
 
         if user_input_step_2 == 1
-            puts "See more info about a game"
-
+            
+            step_see_more_info
         elsif user_input_step_2 == 2
             puts "Sort games by platform"
 
@@ -103,4 +102,31 @@ class GreatGameGetter::CLI
         end
     end
 
+
+    def step_see_more_info
+        puts "See more info about a game"
+
+        # todo - which game would you like to see more information about?
+        GreatGameGetter::Game.print_games_only
+
+        # todo - make this look better
+        puts "Which game would you like to see more information about?"
+
+        user_input_see_more = gets.strip.to_i
+        GreatGameGetter::Game.all.each_with_index do |item, index|
+
+
+            if (index + 1) == user_input_see_more
+
+                data_from_page = GreatGameGetter::Scraper.get_page_detail(item.browser_url)
+                
+                description_value_raw = data_from_page.css(".game_description_snippet").text
+
+                description_value_clean = description_value.strip
+
+                # todo - continue here print more information about a game.
+
+            end
+        end
+    end
 end

@@ -1,18 +1,24 @@
 class GreatGameGetter::Scraper
 
-    def get_page
-        Nokogiri::HTML(open("https://store.steampowered.com/games/"))
+    def get_page(page_url_arg)
+        Nokogiri::HTML(open(page_url_arg))
+    end
+
+    def self.get_page_detail(page_url_arg)
+        Nokogiri::HTML(open(page_url_arg))
     end
 
     def scrape_game_page(page_num_arg)
+        page_data = self.get_page("https://store.steampowered.com/games/")
+
         if page_num_arg == 1
-            self.get_page.css("#tab_content_NewReleases a")
+            page_data.css("#tab_content_NewReleases a")
         elsif page_num_arg == 2
-            self.get_page.css("#tab_content_TopSellers a")
+            page_data.css("#tab_content_TopSellers a")
         elsif page_num_arg == 3
-            self.get_page.css("#tab_content_ConcurrentUsers a")
+            page_data.css("#tab_content_ConcurrentUsers a")
         elsif page_num_arg == 4
-            self.get_page.css("#tab_content_ComingSoon a")
+            page_data.css("#tab_content_ComingSoon a")
         end
     end
 

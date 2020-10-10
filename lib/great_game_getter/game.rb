@@ -97,28 +97,34 @@ class GreatGameGetter::Game
                 puts ""
             end
 
-            @@all.each_with_index do |item, index|
-
-                if !item.title.empty?
-                    puts "Game ##{index+1}."
-                    puts "Title: #{item.title} "
-
-                    if item.price == 0.00
-                        puts "Price: FREE!"
-                    else
-                        puts "Price: $#{item.price}"
-                    end
-                    
-                    puts "Platforms: #{item.platforms.join(", ")}"
-                    puts "Tags: #{item.tags.join(", ")}"
-                    puts "Link to Purchase: #{item.browser_url}" 
-                    puts "Link to Game Artwork: #{item.image_url}"
-                    puts "----------------------------------------------------------------"
-                    puts ""
-                end
-            end
+            print_games_only
         else
             puts "Invalid selection, please select 1 - 4"
         end
     end
+
+
+    def self.print_games_only
+        @@all.each_with_index do |item, index|
+
+            if !item.title.empty?
+                puts "Game ##{index+1}."
+                puts "Title: #{item.title} "
+
+                if item.price == 0.00
+                    puts "Price: FREE!"
+                else
+                    puts "Price: $#{item.price}"
+                end
+                
+                puts "Platforms: #{item.platforms.join(", ")}"
+                puts "Tags: #{item.tags.join(", ")}"
+                puts "Link to Purchase: #{item.browser_url}" 
+                puts "Link to Game Artwork: #{item.image_url}"
+                puts "----------------------------------------------------------------"
+                puts ""
+            end
+        end
+    end
+
 end
