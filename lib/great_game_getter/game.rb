@@ -53,4 +53,46 @@ class GreatGameGetter::Game
     def self.clear_all
         @@all.clear
     end
+
+    def self.print_games(page_arg)
+
+        if page_arg.between?(1,4)
+
+            if page_arg == 1
+                puts ""
+                puts ""
+                puts "========== NEW RELEASES ============="
+                puts ""
+                puts ""
+            elsif page_arg == 2
+                puts ""
+                puts ""
+                puts "========== TOP SELLERS ============="
+                puts ""
+                puts ""
+            elsif page_arg == 3
+                puts ""
+                puts ""
+                puts "========== WHAT'S BEING PLAYED ============="
+                puts ""
+                puts ""
+            elsif page_arg == 4
+                puts ""
+                puts ""
+                puts "========== UPCOMING ============="
+                puts ""
+                puts ""
+            end
+
+            @@all.each_with_index do |item, index|
+
+                if !item.title.empty?
+                    puts "#{index+1}. - #{item.title} "
+                    puts ""
+                end
+            end
+        else
+            puts "Invalid selection, please select pages 1 - 4"
+        end
+    end
 end

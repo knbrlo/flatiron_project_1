@@ -18,6 +18,11 @@ class GreatGameGetter::Scraper
 
     def create_games(page_num_arg)
 
+        # when a new number is pressed, then clear out the old results
+        # p GreatGameGetter::Game.all.count
+        # GreatGameGetter::Game.clear_all
+        # p GreatGameGetter::Game.all.count
+
         data_from_scrape = nil;
         if page_num_arg.between?(1,4)
             data_from_scrape = scrape_game_page(page_num_arg)
