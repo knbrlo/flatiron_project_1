@@ -1,0 +1,3 @@
+class GreatGameGetter::CLI
+    
+end
