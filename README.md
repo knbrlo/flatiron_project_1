@@ -1,5 +1,5 @@
-# flatiron_project_1
-Flatiron School Project 1 - Great Game Getter
+# great_game_getter
+
 
 Run this app by using the following command in terminal:
 
