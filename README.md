@@ -1,10 +1,10 @@
-# great_game_getter
+# playform
 
 
 Run this app by using the following command in terminal:
 
 ```
-ruby bin/great-game-getter
+ruby bin/playform
 ```
 
 This app will allow you to read the following game information from Steam:
