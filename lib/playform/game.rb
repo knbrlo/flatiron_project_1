@@ -1,4 +1,4 @@
-class GreatGameGetter::Game
+class Playform::Game
     attr_accessor :title, :platforms, :tags, :price, :browser_url, :image_url
 
     @@all = []
@@ -179,7 +179,7 @@ class GreatGameGetter::Game
         elsif user_input == 3
             platform_selected = "Linux"
         elsif user_input == 5
-            GreatGameGetter::CLI.start_from_outside
+            Playform::CLI.start_from_outside
         elsif user_input == 9
             exit
         else
@@ -253,7 +253,7 @@ class GreatGameGetter::Game
         elsif user_input == 2
             order_selected = "Lowest First"
         elsif user_input == 5
-            GreatGameGetter::CLI.start_from_outside
+            Playform::CLI.start_from_outside
         elsif user_input == 9
             exit
         else
@@ -322,7 +322,7 @@ class GreatGameGetter::Game
         elsif user_input == 2
             self.print_games_sorted_by_price(section_arg)
         elsif user_input == 5
-            GreatGameGetter::CLI.start_from_outside
+            Playform::CLI.start_from_outside
         elsif user_input == 9
             exit
         end

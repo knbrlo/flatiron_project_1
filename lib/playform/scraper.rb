@@ -1,4 +1,4 @@
-class GreatGameGetter::Scraper
+class Playform::Scraper
 
     def get_page(page_url_arg)
         Nokogiri::HTML(open(page_url_arg))
@@ -28,7 +28,7 @@ class GreatGameGetter::Scraper
         if page_num_arg.between?(1,4)
             data_from_scrape = scrape_game_page(page_num_arg)
             data_from_scrape.each do |game|
-                GreatGameGetter::Game.new_from_page(game)
+                Playform::Game.new_from_page(game)
             end
         else
             puts "Invalid selection, please select 1 - 4"

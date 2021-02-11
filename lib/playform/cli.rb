@@ -1,37 +1,23 @@
-class GreatGameGetter::CLI
+class Playform::CLI
 
     def main_call
         intro_logo
-        puts "Welcome to the Great Game Getter!"
+        puts "Welcome to the Playform!"
         start
     end
 
     def intro_logo
-        puts """
-        #####                                   
-        #     # #####  ######   ##   #####       
-        #       #    # #       #  #    #         
-        #  #### #    # #####  #    #   #         
-        #     # #####  #      ######   #         
-        #     # #   #  #      #    #   #         
-         #####  #    # ###### #    #   #         
-                                                 
-         #####                                   
-        #     #   ##   #    # ######             
-        #        #  #  ##  ## #                  
-        #  #### #    # # ## # #####              
-        #     # ###### #    # #                  
-        #     # #    # #    # #                  
-         #####  #    # #    # ######             
-                                                 
-         #####                                   
-        #     # ###### ##### ##### ###### #####  
-        #       #        #     #   #      #    # 
-        #  #### #####    #     #   #####  #    # 
-        #     # #        #     #   #      #####  
-        #     # #        #     #   #      #   #  
-         #####  ######   #     #   ###### #    # 
-                                                 
+        puts """                                
+
+
+        ██████╗ ██╗      █████╗ ██╗   ██╗███████╗ ██████╗ ██████╗ ███╗   ███╗
+        ██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔═══██╗██╔══██╗████╗ ████║
+        ██████╔╝██║     ███████║ ╚████╔╝ █████╗  ██║   ██║██████╔╝██╔████╔██║
+        ██╔═══╝ ██║     ██╔══██║  ╚██╔╝  ██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║
+        ██║     ███████╗██║  ██║   ██║   ██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║
+        ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
+                                                                             
+                     
         """
     end
 
@@ -53,8 +39,8 @@ class GreatGameGetter::CLI
         user_input = gets.strip.to_i
 
         if user_input.between?(1,4)
-            GreatGameGetter::Scraper.new.create_games(user_input)
-            GreatGameGetter::Game.print_games(user_input)
+            Playform::Scraper.new.create_games(user_input)
+            Playform::Game.print_games(user_input)
             what_next(user_input)
         elsif user_input == 5
             start
@@ -65,7 +51,7 @@ class GreatGameGetter::CLI
     end
 
     def self.start_from_outside
-        cli_instance = GreatGameGetter::CLI.new
+        cli_instance = Playform::CLI.new
         cli_instance.start
     end
 
@@ -94,9 +80,9 @@ class GreatGameGetter::CLI
         if user_input_step_2 == 1
             step_see_more_info(section_arg)
         elsif user_input_step_2 == 2
-            GreatGameGetter::Game.print_games_find_by_platform(section_arg)
+            Playform::Game.print_games_find_by_platform(section_arg)
         elsif user_input_step_2 == 3
-            GreatGameGetter::Game.print_games_sorted_by_price(section_arg)
+            Playform::Game.print_games_sorted_by_price(section_arg)
         elsif user_input_step_2 == 5
             start
         elsif user_input_step_2 == 9
@@ -124,19 +110,19 @@ class GreatGameGetter::CLI
         end
 
         # show all the games available to choose from to see more info about
-        GreatGameGetter::Game.print_games_only
+        Playform::Game.print_games_only
 
         puts ""
         puts "Which game would you like to see more information about?"
         puts ""
 
         user_input_see_more = gets.strip.to_i
-        GreatGameGetter::Game.all.each_with_index do |item, index|
+        Playform::Game.all.each_with_index do |item, index|
 
 
             if (index + 1) == user_input_see_more
 
-                data_from_page = GreatGameGetter::Scraper.get_page_detail(item.browser_url)
+                data_from_page = Playform::Scraper.get_page_detail(item.browser_url)
 
                 # get the description from the latest call
                 description_value_raw = data_from_page.css(".game_description_snippet").text

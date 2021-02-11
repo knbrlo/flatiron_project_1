@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    great-game-getter (1.0)
+    playform (1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -10,38 +10,38 @@ GEM
     colorize (0.8.1)
     diff-lcs (1.4.4)
     method_source (1.0.0)
-    mini_portile2 (2.4.0)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
-    pry (0.13.1)
+    nokogiri (1.11.1-x86_64-darwin)
+      racc (~> 1.4)
+    pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    rake (13.0.1)
-    rspec (3.9.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-    rspec-core (3.9.3)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    racc (1.5.2)
+    rake (13.0.3)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.1)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.3)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.2)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
 
 DEPENDENCIES
-  bundler (~> 2.1.4)
+  bundler (~> 2.2.9)
   colorize (>= 0.8.1)
-  great-game-getter!
   nokogiri (>= 1.10.10)
+  playform!
   pry (>= 0.13.1)
   rake (~> 13.0.1)
   rspec (>= 3.9.0)
 
 BUNDLED WITH
-   2.1.4
+   2.2.9
